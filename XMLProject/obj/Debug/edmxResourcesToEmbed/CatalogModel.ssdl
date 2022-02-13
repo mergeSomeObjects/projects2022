@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'project.dbo.Catalog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Catalog">
+    <Key>
+      <PropertyRef Name="bookID" />
+      <PropertyRef Name="author" />
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="bookID" Type="int" Nullable="false" />
+    <Property Name="author" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="genre" Type="varchar" MaxLength="1" />
+    <Property Name="price" Type="money" />
+    <Property Name="publish_date" Type="datetime" />
+    <Property Name="description" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityContainer Name="projectModelStoreContainer">
+    <EntitySet Name="Catalog" EntityType="Self.Catalog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Catalog].[bookID] AS [bookID], 
+    [Catalog].[author] AS [author], 
+    [Catalog].[title] AS [title], 
+    [Catalog].[genre] AS [genre], 
+    [Catalog].[price] AS [price], 
+    [Catalog].[publish_date] AS [publish_date], 
+    [Catalog].[description] AS [description]
+    FROM [dbo].[Catalog] AS [Catalog]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
