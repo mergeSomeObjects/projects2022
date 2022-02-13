@@ -203,15 +203,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\customer.cs">
+      <DependentUpon>customerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\customerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>customerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\customerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>customerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\customerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>customerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\order.cs">
+      <DependentUpon>customerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CustomerContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\customerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>customerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\customerModel.edmx.diagram">
+      <DependentUpon>customerModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\customerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>customerModel.edmx</DependentUpon>
+      <LastGenOutput>customerModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\customerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>customerModel.edmx</DependentUpon>
+      <LastGenOutput>customerModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessLayer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
