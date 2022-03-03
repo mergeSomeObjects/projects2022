@@ -1,7 +1,6 @@
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\XMLProject.exe.config
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\XMLProject.exe
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\XMLProject.pdb
-C:\Users\perse\source\repos\XMLProject\XMLProject\obj\Debug\XMLProject.csproj.AssemblyReference.cache
 C:\Users\perse\source\repos\XMLProject\XMLProject\obj\Debug\XMLProject.csproj.SuggestedBindingRedirects.cache
 C:\Users\perse\source\repos\XMLProject\XMLProject\obj\Debug\XMLProject.csproj.CoreCompileInputs.cache
 C:\Users\perse\source\repos\XMLProject\XMLProject\obj\Debug\XMLProject.exe
@@ -63,3 +62,4 @@ C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\IKVM.OpenJDK.XML.Web
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\IKVM.OpenJDK.XML.XPath.dll
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\IKVM.Runtime.dll
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\IKVM.Runtime.JNI.dll
+C:\Users\perse\source\repos\XMLProject\XMLProject\obj\Debug\XMLProject.csproj.AssemblyReference.cache
