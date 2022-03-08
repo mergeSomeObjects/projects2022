@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,50 +15,46 @@ namespace XMLProject.Model
         public static void AddCustomers(List<Customer> customers)
         {
             using (var context = new CustomerContext())
-            {
+            {           
+                context.Database.BeginTransaction();
+
                 Model.CustomerContext.Customer c = new CustomerContext.Customer();
                 c.customers = new List<CustomerContext.Customer>();
 
                 Model.CustomerContext.Order o = new CustomerContext.Order();
                 o.orders = new List<CustomerContext.Order>();
-
-
+       
                 foreach (var item in customers)
                 {
                     var customer = new CustomerContext.Customer
                     {
-                        CustomerID = Convert.ToInt32(item.customerID),
-                        companyName = item.companyName,
-                        companyAddress = item.companyAddress,
-                        companyCity = item.companyCity,
-                        companyCountry = item.companyCountry,
-                        contactName = item.contactName,
-                        contactPhone = item.contactPhone,
-                        contactTitle = item.contactTitle,
-                        postalCode = Convert.ToInt32(item.postalCode),
-                        regionCity = item.regionCity
-                      
-
+                        CustomerID = item.customerID,
+                        CompanyName = item.companyName,
+                        ContactName = item.contactName,
+                        ContactTitle = item.contactTitle,
+                        Phone = item.contactPhone,                       
+                        StreetAddress = item.companyAddress,
+                        City = item.companyCity,
+                        Region = item.regionCity                     
                     };
 
-                    c.customers.Add(customer);
-
-                    //
-                    var order = new CustomerContext.Order
+                    // c.customers.Add(customer);
+                    if(!String.IsNullOrEmpty(customer.CustomerID))
                     {
+                        context.Add(customer);
+                    }
+                    
+                   // var order = new CustomerContext.Order
+                   // {
+                   //     employeeID = Convert.ToInt32(item.Order.employeeID),
+                   //     customerID = item.Order.customerID
+                   //};
 
-
-                    };
-
-                    o.orders.Add(order);
+                    //   o.orders.Add(order);
+                  //  context.Add(order);
                 };
 
-
-                // o.orders.Add()
-
-
-
-
+                context.SaveChanges();               
             }
         }
     }

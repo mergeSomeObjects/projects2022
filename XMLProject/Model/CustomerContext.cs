@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
@@ -15,44 +16,57 @@ namespace XMLProject.Model
     public class CustomerContext : DbContext 
     {
 
-        private Microsoft.EntityFrameworkCore.DbSet<Customer> _customers { get; set; }
-        private Microsoft.EntityFrameworkCore.DbSet<Order> _orders { get; set; }
+        private Microsoft.EntityFrameworkCore.DbSet<Customer> customer { get; set; }
+        private Microsoft.EntityFrameworkCore.DbSet<Order> order { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=projectEntities1;Trusted_Connection=True;");
+        
+            var connectionString = ConfigurationManager.ConnectionStrings["projectEntities1"].ConnectionString;
+            optionsBuilder.UseSqlServer(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Order>(
+                    eb =>
+                    {
+                        eb.HasNoKey();               
+                    });
+        }
+
 
 
         public class Customer
         {
-            public int CustomerID { get; set; }
+            public string CustomerID { get; set; }
 
-            public string companyName { get; set; }
+            public string CompanyName { get; set; }
 
-            public string contactName { get; set; }
+            public string ContactName { get; set; }
 
-            public string contactTitle { get; set;  }
+            public string ContactTitle { get; set;  }
 
-            public string contactPhone { get; set; }
+            public string Phone { get; set; }
 
-            public string companyAddress { get; set; }
+            public string StreetAddress { get; set; }
 
-            public string companyCity { get; set; }
+            public string City { get; set; }
 
-            public string regionCity { get; set;  }
+            public string Region { get; set;  }
 
-            public int postalCode { get; set; }
+            public int PostalCode { get; set; }
 
-            public string companyCountry { get; set; }
+            public string Country { get; set; }
 
             public List<Customer> customers { get; set; }
         }
 
         public class Order
         {
-            public int customerID;
+            public string customerID;
 
             public int employeeID;
 
