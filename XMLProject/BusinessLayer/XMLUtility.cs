@@ -10,11 +10,11 @@ namespace XMLProject.BusinessLayer
 {
     public class XMLUtility
     {
-
-
-        public static void GetXML()
+        public void GetXML()
         {
-            XElement node = XElement.Load(@"C:\Users\perse\Documents\sample.xml");
+
+            XElement node = XElement.Load(@"C:\Users\perse\source\repos\XMLProject\XMLProject\xml\sample.xml");
+
             IEnumerable<XElement> childElements =
                 from elements in node.Elements()
                 select elements;

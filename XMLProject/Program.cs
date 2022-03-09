@@ -14,8 +14,8 @@ namespace XMLProject
     {
         public static void Main(string[] args)
         {
-
-            XMLUtility.GetXML(); 
+            XMLUtility utility = new XMLUtility();
+            utility.GetXML();
 
         }
     }

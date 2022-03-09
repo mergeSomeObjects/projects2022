@@ -106,3 +106,4 @@ C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\pt-BR\Microsoft.Data
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\perse\source\repos\XMLProject\XMLProject\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\perse\source\repos\XMLProject\XMLProject\obj\Debug\XMLProject.g.resources

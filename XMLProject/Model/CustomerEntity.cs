@@ -12,10 +12,8 @@ namespace XMLProject.Model
 {
     public static class CustomerEntity
     {
-
         public static void AddCustomers(List<CustomerModel.Customer> customers)
         {
-
             var connectionString = ConfigurationManager.ConnectionStrings["CustomerModel"].ConnectionString;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
