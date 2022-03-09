@@ -1,75 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="customer">
-    <Key>
-      <PropertyRef Name="CustomerID" />
-    </Key>
-    <Property Name="CustomerID" Type="int" Nullable="false" />
-    <Property Name="CompanyName" Type="varchar" MaxLength="1" />
-    <Property Name="ContactName" Type="varchar" MaxLength="1" />
-    <Property Name="ContactTitle" Type="varchar" MaxLength="1" />
-    <Property Name="Phone" Type="varchar" MaxLength="1" />
-    <Property Name="Fax" Type="varchar" MaxLength="1" />
-    <Property Name="StreetAddress" Type="varchar" MaxLength="1" />
-    <Property Name="City" Type="varchar" MaxLength="1" />
-    <Property Name="Region" Type="varchar" MaxLength="1" />
-    <Property Name="PostalCode" Type="int" />
-    <Property Name="Country" Type="varchar" MaxLength="1" />
-  </EntityType>
+<Schema Namespace="projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errors Found During Generation:
-warning 6002: The table/view 'project.dbo.orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="orders">
-    <Key>
-      <PropertyRef Name="CustomerID" />
-    </Key>
-    <Property Name="CustomerID" Type="int" Nullable="false" />
-    <Property Name="EmployeeID" Type="int" />
-    <Property Name="OrderDate" Type="datetime" />
-    <Property Name="RequiredDate" Type="datetime" />
-    <Property Name="ShippedDate" Type="datetime" />
-    <Property Name="ShipVia" Type="int" />
-    <Property Name="Freight" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="ShipName" Type="varchar" MaxLength="1" />
-    <Property Name="ShipAddress" Type="varchar" MaxLength="1" />
-    <Property Name="ShipCity" Type="varchar" MaxLength="1" />
-    <Property Name="ShipRegion" Type="varchar" MaxLength="1" />
-    <Property Name="ShipPostalCode" Type="int" />
-    <Property Name="ShipCountry" Type="varchar" MaxLength="1" />
-  </EntityType>
-  <Association Name="FK_customorders">
-    <End Role="customer" Type="Self.customer" Multiplicity="1" />
-    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="customer">
-        <PropertyRef Name="CustomerID" />
-      </Principal>
-      <Dependent Role="orders">
-        <PropertyRef Name="CustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="projectModelStoreContainer">
-    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="orders" EntityType="Self.orders" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [orders].[CustomerID] AS [CustomerID], 
-    [orders].[EmployeeID] AS [EmployeeID], 
-    [orders].[OrderDate] AS [OrderDate], 
-    [orders].[RequiredDate] AS [RequiredDate], 
-    [orders].[ShippedDate] AS [ShippedDate], 
-    [orders].[ShipVia] AS [ShipVia], 
-    [orders].[Freight] AS [Freight], 
-    [orders].[ShipName] AS [ShipName], 
-    [orders].[ShipAddress] AS [ShipAddress], 
-    [orders].[ShipCity] AS [ShipCity], 
-    [orders].[ShipRegion] AS [ShipRegion], 
-    [orders].[ShipPostalCode] AS [ShipPostalCode], 
-    [orders].[ShipCountry] AS [ShipCountry]
-    FROM [dbo].[orders] AS [orders]</DefiningQuery>
-    </EntitySet>
-    <AssociationSet Name="FK_customorders" Association="Self.FK_customorders">
-      <End Role="customer" EntitySet="customer" />
-      <End Role="orders" EntitySet="orders" />
-    </AssociationSet>
-  </EntityContainer>
+warning 6013: The table/view 'project.dbo.customer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="customer">
+          <Property Name="CustomerID" Type="varchar(max)" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="1" />
+          <Property Name="ContactName" Type="varchar" MaxLength="1" />
+          <Property Name="ContactTitle" Type="varchar" MaxLength="1" />
+          <Property Name="Phone" Type="varchar" MaxLength="1" />
+          <Property Name="Fax" Type="varchar" MaxLength="1" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="1" />
+          <Property Name="City" Type="varchar" MaxLength="1" />
+          <Property Name="Region" Type="varchar" MaxLength="1" />
+          <Property Name="PostalCode" Type="int" />
+          <Property Name="Country" Type="varchar" MaxLength="1" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'project.dbo.orders' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="orders">
+          <Property Name="CustomerID" Type="varchar(max)" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="RequiredDate" Type="datetime" />
+          <Property Name="ShippedDate" Type="datetime" />
+          <Property Name="ShipVia" Type="int" />
+          <Property Name="Freight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ShipName" Type="varchar" MaxLength="1" />
+          <Property Name="ShipAddress" Type="varchar" MaxLength="1" />
+          <Property Name="ShipCity" Type="varchar" MaxLength="1" />
+          <Property Name="ShipRegion" Type="varchar" MaxLength="1" />
+          <Property Name="ShipPostalCode" Type="int" />
+          <Property Name="ShipCountry" Type="varchar" MaxLength="1" />
+        </EntityType>-->
+  <EntityContainer Name="projectModelStoreContainer" />
 </Schema>

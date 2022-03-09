@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,51 +13,40 @@ namespace XMLProject.Model
     public static class CustomerEntity
     {
 
-        public static void AddCustomers(List<Customer> customers)
+        public static void AddCustomers(List<CustomerModel.Customer> customers)
         {
-            using (var context = new CustomerContext())
-            {           
-                context.Database.BeginTransaction();
 
-                Model.CustomerContext.Customer c = new CustomerContext.Customer();
-                c.customers = new List<CustomerContext.Customer>();
+            var connectionString = ConfigurationManager.ConnectionStrings["CustomerModel"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
 
-                Model.CustomerContext.Order o = new CustomerContext.Order();
-                o.orders = new List<CustomerContext.Order>();
-       
-                foreach (var item in customers)
+                using (var cus = new CustomerModel())
                 {
-                    var customer = new CustomerContext.Customer
+                    foreach (var item in customers)
                     {
-                        CustomerID = item.customerID,
-                        CompanyName = item.companyName,
-                        ContactName = item.contactName,
-                        ContactTitle = item.contactTitle,
-                        Phone = item.contactPhone,                       
-                        StreetAddress = item.companyAddress,
-                        City = item.companyCity,
-                        Region = item.regionCity                     
-                    };
-
-                    // c.customers.Add(customer);
-                    if(!String.IsNullOrEmpty(customer.CustomerID))
-                    {
-                        context.Add(customer);
+                        var customer = new customer()
+                        {
+                            CustomerID = item.CustomerID,
+                            CompanyName = item.CompanyName,
+                            ContactName = item.ContactName,
+                            ContactTitle = item.ContactTitle,
+                            Phone = item.Phone,
+                            StreetAddress = item.StreetAddress,
+                            City = item.City,
+                            Region = item.Region
+                        };
+                        if (!String.IsNullOrEmpty(customer.CustomerID))
+                        {
+                            cus.customers.Add(customer);
+                        }
                     }
-                    
-                   // var order = new CustomerContext.Order
-                   // {
-                   //     employeeID = Convert.ToInt32(item.Order.employeeID),
-                   //     customerID = item.Order.customerID
-                   //};
 
-                    //   o.orders.Add(order);
-                  //  context.Add(order);
-                };
-
-                context.SaveChanges();               
+                    cus.SaveChanges();
+                }          
             }
         }
     }
 }
+
 
